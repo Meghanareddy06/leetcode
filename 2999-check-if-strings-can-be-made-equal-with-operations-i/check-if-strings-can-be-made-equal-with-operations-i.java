@@ -1,21 +1,10 @@
 public class Solution {
     public boolean canBeEqual(String s1, String s2) {
-        
-        char[] g1_s1 = {s1.charAt(0), s1.charAt(2)};
-        char[] g1_s2 = {s2.charAt(0), s2.charAt(2)};
-        
-        
-        char[] g2_s1 = {s1.charAt(1), s1.charAt(3)};
-        char[] g2_s2 = {s2.charAt(1), s2.charAt(3)};
-        
-       
-        java.util.Arrays.sort(g1_s1);
-        java.util.Arrays.sort(g1_s2);
-        java.util.Arrays.sort(g2_s1);
-        java.util.Arrays.sort(g2_s2);
-        
-        
-        return java.util.Arrays.equals(g1_s1, g1_s2) &&
-               java.util.Arrays.equals(g2_s1, g2_s2);
+        return match(s1.charAt(0), s1.charAt(2), s2.charAt(0), s2.charAt(2)) &&
+               match(s1.charAt(1), s1.charAt(3), s2.charAt(1), s2.charAt(3));
+    }
+
+    private boolean match(char a, char b, char c, char d) {
+        return (a == c && b == d) || (a == d && b == c);
     }
 }
